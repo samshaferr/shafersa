@@ -1,19 +1,32 @@
 # With the data frame you created last week you will:
-unique.char<-c('German Shapard','Golden Retriver','Pug','Boxer','Husky','Poodle','Chihuahua','Beagle','Australian Cattle','Rottweiler','Border Collie','Corgi','St. Bernard','Newfoundland','Pitbull')
-group.char<-c('Breakfast','Breakfast','Breakfast','Breakfast','Breakfast','Lunch','Lunch','Lunch','Lunch','Lunch','Dinner','Dinner','Dinner','Dinner','Dinner')
-uniqu.num<-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
-rep.num<-c(1,1,1,1,1,0,0,0,0,0,1,1,1,1,1)
-dec.num<-c(3.14,2.718,9.81,1.62,3.71,8.887,10.44,8.89,24.79,11.15,0.62,3.22,275.4,3.65,7.24)
-data <- cbind(unique.char,group.char,uniqu.num,rep.num,dec.num)
-data
-df1 <- as.data.frame(data)
+a<-c('German Shapard','Golden Retriver','Pug','Boxer','Husky','Poodle','Chihuahua','Beagle','Australian Cattle','Rottweiler','Border Collie','Corgi','St. Bernard','Newfoundland','Pitbull')
+b<-c('Breakfast','Breakfast','Breakfast','Breakfast','Breakfast','Lunch','Lunch','Lunch','Lunch','Lunch','Dinner','Dinner','Dinner','Dinner','Dinner')
+c<-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+d<-c(1,2,3,1,2,3,1,2,3,1,2,3,1,2,3)
+e<-c(3.14,2.718,9.81,1.62,3.71,8.887,10.44,8.89,24.79,11.15,0.62,3.22,275.4,3.65,7.24)
+df <- as.data.frame(cbind(a,b,c,d,e))
+df
+df$c<- as.numeric(as.character(df$c))
+df$c <- as.numeric(as.character(df$c))
+df$e <- as.numeric(as.character(df$e))
+df
+colnames(add.row) <- colnames(df)    
+df
+row.names(df) <- df$a
+df <- df[,-1]
+df
+
+df1 <- rbind(df, add.row)
 df1
-colnames(df1) <- c("Dog Breeds", "Meals", "Factors","Binary","Gravity of Planets")
+
+row.names(df1) <- df1$unique.char
+df1 <- df1[,-1]
 df1
+
 # Create a barplot for one numeric column, grouped by the character vector with 3 unique values (10 points)
-df1.mean <- aggregate(df1$rep.num ~df1$group.char, FUN = "mean")
-df1.mean
-colnames(df.mean) <- c("Factor","Mean")
+df.mean <- aggregate(df$c ,df$b, FUN = "mean")
+df.mean
+colnames(df1.mean) <- c("Factor","Mean")
 df.mean 
  # Add error bars with mean and standard deviation to the plot
 df.sd <- aggregate(df1$rep.num ~df1$group.char, FUN = "sd")

@@ -21,7 +21,7 @@ colnames(add.row) <- colnames(df)
 
 # Bind rows:
 df1 <- rbind(df, add.row)
-
+df1
 # Now to move the row names and delete the column. 
 row.names(df1) <- df1$unique.char
 df1 <- df1[,-1]
