@@ -49,7 +49,7 @@ hist(df1$dec.num, breaks = 8)
 
 
 
-# Boxplots ####
+# Box plots ####
 # What if you want to look at distributions for multiple columns at once to compare?
   # This is where box plots can be very useful for comparing value ranges with the simple boxplot() function.
 boxplot(df1)
@@ -92,7 +92,6 @@ df.mean
 # Having $ symbols inside of column names can get messy fast, so we will rename these before continuing:
 colnames(df.mean) <- c("Factor","Mean")
 df.mean
-
 #Now we can plot the mean values by factor:
 barplot(df.mean$Mean)
 
