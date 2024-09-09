@@ -46,10 +46,18 @@ arrows(b.plot, df.mean$Mean-df.sd$StanDev,
 b.plot<- barplot (df.mean$Mean, names.arg = df.mean$Factor, ylim=c (0,20))
 
 # Change the x and y labels and add a title
+b.plot<- barplot(df.mean$Mean, names.arg= df.mean$Factor, ylim= c(0,20), xlab= "Explanatory", ylab="Response",main="Bar Plot")
   # Export the plot as a PDF that is 4 inches wide and 7 inches tall.
-
+get.wd
+getwd()
 # Create a scatter plot between two of your numeric columns. (10 points)
+plot(df$e ~ df$d)
+plot(df$e ~ df$d, xlab = "Explanatory", ylab = "Response", main="Scatter Plot")
+
   # Change the point shape and color to something NOT used in the example.
+plot(df$e ~ df$d, xlab = "Explanatory", ylab = "Response", main = " Scatter Plot", 
+     cex.axis=0.75, cex.main = 1.25, cex.lab = 0.75, pch=3, col = "firebrick1")
+
   # Change the x and y labels and add a title
   # Export the plot as a JPEG by using the "Export" button in the plotting pane.
 
