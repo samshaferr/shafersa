@@ -22,14 +22,28 @@ df <- df[,-1]
 df
 
 # Create a barplot for one numeric column, grouped by the character vector with 3 unique values (10 points)
-df.mean <- aggregate(df$c ,df$b, FUN = "mean")
+df.mean <- aggregate(df$c~df$b, FUN = "mean")
 df.mean
-colnames(df1.mean) <- c("Factor","Mean")
+colnames(df.mean) <- c("Factor","Mean")
 df.mean 
  # Add error bars with mean and standard deviation to the plot
-df.sd <- aggregate(df1$rep.num ~df1$group.char, FUN = "sd")
+df.sd <- aggregate(df$c ~df$b, FUN = "sd")
 df.sd
 colnames(df.sd) <- c("Factor","Mean")
+df.sd
+barplot(df.mean$Mean, names.arg = df.mean$Factor)
+
+barplot
+
+df.sd <- aggregate(df$c ~df$b, FUN = "sd")
+df.sd
+
+b.plot <- barplot(df.mean$Mean, names.arg = df.mean$Factor)
+
+arrows(b.plot, df.mean$Mean-df.sd$StanDev,
+       b.plot, df.mean$Mean+df.sd$StanDev,angle=90,code=3)
+
+b.plot<- barplot (df.mean$Mean, names.arg = df.mean$Factor, ylim=c (0,20))
 
 # Change the x and y labels and add a title
   # Export the plot as a PDF that is 4 inches wide and 7 inches tall.
