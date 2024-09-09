@@ -16,12 +16,10 @@ row.names(df) <- df$a
 df <- df[,-1]
 df
 
-df1 <- rbind(df, add.row)
-df1
 
-row.names(df1) <- df1$unique.char
-df1 <- df1[,-1]
-df1
+row.names(df) <- df$a
+df <- df[,-1]
+df
 
 # Create a barplot for one numeric column, grouped by the character vector with 3 unique values (10 points)
 df.mean <- aggregate(df$c ,df$b, FUN = "mean")
