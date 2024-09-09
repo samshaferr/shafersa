@@ -49,3 +49,5 @@ row.names(df) <- df$Factors
 df
 df[1,]
 df[,-1]
+#Doesn't include everything after adding a new row...
+
