@@ -116,7 +116,7 @@ plot(gvisWordTree(Cats, textvar = "Phrase"))
 # Annotated Timeline ####
 # This particular function caught my eye as many data in ecology are time series-based.
 # First, let's run the example:
-data(Stock)
+?data(Stock)
 A1 <- gvisAnnotatedTimeLine(Stock, datevar="Date",
                             numvar="Value", idvar="Device",
                             titlevar="Title", annotationvar="Annotation",

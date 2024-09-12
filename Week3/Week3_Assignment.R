@@ -1,9 +1,10 @@
 # (1) Approximately how many hours ahead of Sunbury was the peak flow in Lewisburg during the 2011 flood? (2 pt)
   
-
+##Sunbury flooded September 9th at 1:45pm and Lewisburg flooded September 8 at 6:00pm. 17.25 hours after Lewisburg flooded Sunbury flooded.  
 
 # (2) Give one reason why information on the time between peak flow events up- and downstream could be valuable information? (4 pts)
 
+## This could be valuable info to let people down stream know if they should evacuate in the case of a flood event.
 
 # Package scavenger hunt! (12 pts each)
 
