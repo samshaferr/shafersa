@@ -1,6 +1,7 @@
 # (1) Approximately how many hours ahead of Sunbury was the peak flow in Lewisburg during the 2011 flood? (2 pt)
   
 ##Sunbury flooded September 9th at 1:45pm and Lewisburg flooded September 8 at 6:00pm. 17.25 hours after Lewisburg flooded Sunbury flooded.  
+#I think you were looking at the wrong lines (loyalsock?)...not taking off though since you clearly did the math!
 
 # (2) Give one reason why information on the time between peak flow events up- and downstream could be valuable information? (4 pts)
 
@@ -118,6 +119,7 @@ SimResults = matrix(data = NA, ncol = 3, nrow = Gen*Pop)
 GenDriftSim(Pop = Pop, Gen = Gen, NM = 180, NF = 180, P = P, graph = "y",  histo = "n")
 dev.off
 
+#This is really cool, but doesn't come from CRAN or GitHub :(
 ##This new code shows if the male and female populations were equal in size.
         
 # Common options might be allele frequency, population size, fitness level, etc. 
@@ -150,6 +152,7 @@ df <- data.matrix(datafish) %>%
 
 diversity(df,index = "simpson")
 
+#This code doesn't run for me and I don't know where you got this example from, it doesn't look like it's from vegan. Is it? I couldn't find it in help files or googling.
 
         # Depending on the example usage of the function, either upload a plot of the result or use print() and copy/paste the console output into your script.
     # After running the function example, modify your script to generate another diversity metric that is NOT part of the example. 
