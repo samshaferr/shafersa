@@ -27,9 +27,20 @@ colnames(ge_data)
 row.names(ge_data)
 plot(data$Gen ~ data$Yield)
 
+##Genotype
+model_gen<-lm(Yield~Gen, data=ge_data)
+summary(model_gen)
 
-# Test the significance of both models and look at the model summary. (4 points each)
+
+##Env
+model_env<-lm(Yield~Env, data=ge_data)
+summary(model_env)
+
+### Test the significance of both models and look at the model summary. (4 points each)
   # Which model is a better fit to explain the yield response, and WHY? (6 points)
+##Genotype represents the yield response better because it represents more of the data.The environment is only telling part of the story 
+
   # Hint: Does one model seem more likely to be over-fitted?
 
 # Which environment would be your very WORST choice for generating a strong yield response? (2 points)
+##EnvKhanewal would be the worst environment for generating a yield response. The p value that it reads back is insignificant
