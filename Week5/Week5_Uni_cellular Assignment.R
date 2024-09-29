@@ -1,7 +1,15 @@
 # First, recreate Figure 4 from Herron et al. (2019). De novo origins of multicellularity in response to predation. Scientific reports.
-  # Search datadryad.org by the paper title and download the dataset. It will include .csv files and R scripts, organized by figure.
+  
+
+# Search datadryad.org by the paper title and download the dataset. It will include .csv files and R scripts, organized by figure.
+
   # Save the script and change the working directory on lines 8 and 115 to match your computer
-  # Upload the plot you've created to GitHub. (4 points)
+
+setwd("C:/GitHub/shafersa")
+data <- read.csv(file=("Figure4Data.csv"), header=T)
+
+# Upload the plot you've created to GitHub. (4 points)
+
   # Zoom into your plot to look at the distribution for different strains.
 
 # Do all of the strains in the plot have the same distributions (yes/no)? (1 pt)
