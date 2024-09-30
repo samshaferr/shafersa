@@ -5,11 +5,15 @@
 
   # Save the script and change the working directory on lines 8 and 115 to match your computer
 
-setwd("C:/GitHub/shafersa")
+setwd("C:/GitHub/shafersa/Week5/")
 data <- read.csv(file=("Figure4Data.csv"), header=T)
 
 # Upload the plot you've created to GitHub. (4 points)
-
+boxplot(data[,1:2])
+boxplot(data$TechRep~data$Strain, xlab="Strain", ylab="Cells per Propagule", main="Figure 4")
+log_data <- as.data.frame(log2data[,2])
+data<-log2("TechRep")
+data
   # Zoom into your plot to look at the distribution for different strains.
 
 # Do all of the strains in the plot have the same distributions (yes/no)? (1 pt)
