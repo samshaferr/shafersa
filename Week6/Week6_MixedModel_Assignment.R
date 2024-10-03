@@ -1,11 +1,24 @@
 # Read in the "Toscano_Griffen_Data.csv" data from GitHub and load the three packages we used in the tutorial this week.
 # The paper these data came from is uploaded to Canvas as "Toscano&Griffen_2014_JAE..."
-
-
+setwd("C:/GitHub/shafersa/Week6")
+df<- read.csv(file=("Toscano_Griffen_Data.csv"), header=T)
+library(MASS)
+library(MuMIn)
+library(lme4)
+library(mgcv)
 # First create models with the same (y) and method (GLMM) as the published paper, using the GLMM function from this week's tutorial. 
+## activity level = response var
+## carapace len., claw width, temp, toadish predation
+
+
   #Create two different models using the same 3 predictor (x) variables from the dataset. (4 points each) 
+
     # In one model only include additive effects.
+glmm.mod1<-glmmPQL(eaten/prey~temperature+carapace.width+claw.width, family=binomial, random = ~ 1 | block, data = df)
+summary(glmm.mod1)
     # In the other model include one interactive effect.
+glmm.mod2<-glmmPQL(eaten/prey~temperature+carapace.width*claw.width, family=binomial, random = ~ 1 | block, data = df)
+summary(glmm.mod2)
     # Use a binomial distribution and block as a random effect in both models to match the paper's analyses. Remember ?family to find distribution names.
 
 # The authors used proportional consumption of prey as the (y) in their model, but did not include this in the dataset.
@@ -20,10 +33,16 @@ df$prop.cons <- df$eaten/df$prey
 
 # (Q3) - Plot the residuals of both models. Do you think either model is a good fit? Why or why not? (3 pts)
 
+plot(glmm.mod1)
+plot(glmm.mod2)
+
 
 # Re-run both models as generalized additive models instead (using gam). Then compare the AIC of both models. (4 points each)
+gam.mod1<-gam (eaten/prey~temperature+carapace.width+claw.width, family=binomial, random = ~ 1 | block, data = df)
+summary(gam.mod1)
 
-
+gam.mod2<-gam(eaten/prey~temperature+carapace.width*claw.width, family=binomial, random = ~ 1 | block, data = df)
+summary(gam.mod2)
 # (Q4) - Which model is a better fit? (2 pt)
 
 
