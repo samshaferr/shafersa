@@ -7,6 +7,7 @@ library(MuMIn)
 library(lme4)
 library(mgcv)
 # First create models with the same (y) and method (GLMM) as the published paper, using the GLMM function from this week's tutorial. 
+
 ## activity level = response var
 ## carapace len., claw width, temp, toadish predation
 
@@ -26,7 +27,7 @@ summary(glmm.mod2)
 df$prop.cons <- df$eaten/df$prey 
 
 # (Q1) - The code I've provided in line 13 above is performing two operations at once. What are they? (2 pts)
-
+## prop.cons represent the proportion of mussels consumed
 
 # (Q2) - Did the interactive effect change which variables predict proportional consumption? How, SPECIFICALLY, did the results change? (5 pts)
 
