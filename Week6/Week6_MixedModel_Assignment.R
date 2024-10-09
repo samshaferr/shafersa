@@ -34,12 +34,13 @@ df$prop.cons <- df$eaten/df$prey
 
 ##Yes, the interactive effect changed with predicted proportional consumption. Generally as crab activity increased, the proportion of mussels 
 ## consumed also increased. this was the case with smaller crabs but had no effect on the mussel consumption in lager crabs.
-
+#What about the interactive effect? Otherwise great!
 
 # (Q3) - Plot the residuals of both models. Do you think either model is a good fit? Why or why not? (3 pts)
 ## I think the first model is a better fit for the data. There is less clumping of the points and more even distribution of 
 ## points. Whereas in the second model the points generally get more dense as you move toward the bottom right corner of the graph. 
 ## There are clearly some outliers in both models but the first model has less.
+#Both are really really bad...
 
 plot(glmm.mod1)
 plot(glmm.mod2)
@@ -57,7 +58,7 @@ summary(gam.mod2)
 # (Q5) - Based on the residuals of your generalized additive models, how confident are you in these results? (2 pts)
 
 ##Neither result gave way to much significance. They both didn't have a strong R value. 
-
+#This question has nothing to do with the R-squared, just the residuals.
 
 
 
