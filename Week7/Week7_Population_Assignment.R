@@ -8,9 +8,9 @@ library(readr)
 library(EcoVirtual)
 library(tcltk)
 library(deSolve)
-setwd("C:/Users/shafer/Documents/GitHub/shafersa/Week7") 
+setwd("C:/GitHub/shafersa/Week7") #NO! Use the right GitHub directory
 library(readr)
-Plankton_move_average <- read_csv("Plankton_move_average.csv")
+Plankton_move_average <- read.csv("Plankton_move_average.csv")#Use the base read.csv function.
 View(Plankton_move_average)
 data<- Plankton_move_average
 #Used the following lines to format the date and remove NAs from the dataset:
@@ -31,10 +31,10 @@ ggplot(data)  +
 
 # (1) - Which species is most likely to be r-selected prey and which its primary predator? (2 pts)
 ##Bythotrephes is most likely to be r-selected as prey and it's primary predatory would be D.mendotae.
-
+#Backward.
 # What is one relationship the third species MIGHT have to the first two? (2 pts)
 ## As the third population increases (prey) the other two populations will fluctuate more frequently.
-
+#But what't the relationship?
 #Now copy/paste in the Lotka-Volterra function, plotting script, and load the "deSolve" package from the tutorial:
 
 LotVmod <- function (Time, State, Pars) {
@@ -74,6 +74,7 @@ ggplot(data)  +
 # Export your final L-V plot with a legend that includes the appropriate genus and/or species name as if the model results were the real plankton data, 
 # and upload with your script. (hint - remember which one is the predator and which is the prey) (8 pts)
 
+#Where are the rest of the plots for L-V and the responses?
 
 
 
