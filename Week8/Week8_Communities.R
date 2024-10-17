@@ -117,8 +117,7 @@ rarefaction<-function(x,subsample=5, plot=TRUE, color=TRUE, error=FALSE, legend=
   
   library(vegan)
   
-  
-  
+
   x <- as.matrix(x)
   y1<-apply(x, 1, sum)
   rare.data<-x                                   

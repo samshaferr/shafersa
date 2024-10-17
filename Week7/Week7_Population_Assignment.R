@@ -28,7 +28,10 @@ ggplot(data)  +
 # Export this plot to have on hand for reference in the next section of the assignment (and upload with your script). (8 pts)
 
 # (1) - Which species is most likely to be r-selected prey and which its primary predator? (2 pts)
+
+
 # What is one relationship the third species MIGHT have to the first two? (2 pts)
+
 
 #Now copy/paste in the Lotka-Volterra function, plotting script, and load the "deSolve" package from the tutorial:
 
