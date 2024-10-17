@@ -8,11 +8,11 @@ library(logspline)
 
   # Save the script and change the working directory on lines 8 and 115 to match your computer
 
-setwd("C:/Users/shafer/Documents/GitHub/shafersa/Week5")
+setwd("C:/Users/shafer/Documents/GitHub/shafersa/Week5")#Set to github repo.
 data <- read.csv(file=("Figure4Data.csv"), header=T)
 
 # Upload the plot you've created to GitHub. (4 points)
-boxplot(data$TechRep~data$Strain, xlab="Strain", ylab="Cells per Propagule", main="Figure 4")
+boxplot(data$TechRep~data$Strain, xlab="Strain", ylab="Cells per Propagule", main="Figure 4")#This isn't the plot you were supposed to make...
 
   # Zoom into yoTechRep# Zoom into your plot to look at the distribution for different strains.
 
@@ -27,7 +27,7 @@ boxplot(data$TechRep~data$Strain, xlab="Strain", ylab="Cells per Propagule", mai
 
 # Use the fitdist() and gofstat() functions to compare the poisson, negative binomial, and logistic distributions for:
   # (1) - The number of cells of progeny (data$Num.Cells.Progeny)
-hist(clean_data$Num.Cells.Progeny, main="Progeny")
+hist(clean_data$Num.Cells.Progeny, main="Progeny")#This is out of order - can't run it because clean_data doesn't exist yet.
 
 sum(is.na(data$Num.Cells.Progeny))
 sum(is.infinite(data$Num.Cells.Progeny))
@@ -37,7 +37,7 @@ fit.logis<-fitdist(clean_data$Num.Cells.Progeny, distr = "logis")
 fit.weibull <- fitdist(clean_data$Num.Cells.Progeny, distr="weibull", lower = c(0, 0), start = list(scale = 1, shape = 1))
 fit.gamma<-fitdist(clean_data$Num.Cells.Progeny, distr = "gamma",lower = c(0, 0), start = list(scale = 1, shape = 1))
 gofstat(list(fit.weibull, fit.gamma, fit.norm, fit.logis), chisqbreaks)
-chisqbreaks<-c(1,2,4,8,16,3,64)
+chisqbreaks<-c(1,2,4,8,16,3,64)#This doesn't run in line - need to rerun above line for it to work.
 
 
   # (2) - The replication time (data$RepTime.sec)
@@ -48,7 +48,7 @@ fit.logis1<-fitdist(clean_data$RepTime.sec, distr = "logis")
 fit.weibull1 <- fitdist(clean_data$RepTime.sec, distr="weibull", lower = c(0, 0), start = list(scale = 1, shape = 1))
 fit.gamma1<-fitdist(clean_data$RepTime.sec, distr = "gamma",lower = c(0, 0), start = list(scale = 1, shape = 1))
 gofstat(list(fit.logis1,fit.weibull1,fit.gamma1))
-
+#You didn;t compare the right distributions!
 #HINT- "Num.Cells.Progeny" has defined breaks. To display results, use the formula with the "chisqbreaks" argument as follows:
       #gofstat(list(fit.1, fit.2, fit.3, etc), 1,2,4,8,16,32,64))
 
@@ -58,6 +58,7 @@ gofstat(list(fit.logis1,fit.weibull1,fit.gamma1))
 ##Negative Binomial
   # (2) - The replication time (data$RepTime.sec)?
 ##poisson
+#You never ran the poisson fit...
 
 # Plot a generic histogram for the replication time (data$RepTime.sec) (4 pt)
 hist(clean_data$RepTime.sec)
@@ -66,7 +67,7 @@ hist(clean_data$RepTime.sec)
   # Don't cheat by looking at the paper! 
 ##Null Hypothesis: The time is takes to reproduce does not impact the amount of offspring born and the strain retained.
 ##Alt Hypothesis: The time it take to reproduce does impact the amount of offspring born and the strains retained.
-
+#This isn't a hypothesis to explain the pattern...
     # This hypothesis does not need to be correct - it only needs to be ecologically rational based these two figures.
 
 
