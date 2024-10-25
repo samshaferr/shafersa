@@ -16,28 +16,49 @@ row.names(df) <- df$a
 df <- df[,-1]
 df
 
-df1 <- rbind(df, add.row)
-df1
 
-row.names(df1) <- df1$unique.char
-df1 <- df1[,-1]
-df1
-
+row.names(df) <- df$a
+df <- df[,-1]
+df
+#doing this twice removes both factor columns
 # Create a barplot for one numeric column, grouped by the character vector with 3 unique values (10 points)
-df.mean <- aggregate(df$c ,df$b, FUN = "mean")
+df.mean <- aggregate(df$c~df$b, FUN = "mean")
 df.mean
-colnames(df1.mean) <- c("Factor","Mean")
+colnames(df.mean) <- c("Factor","Mean")
 df.mean 
  # Add error bars with mean and standard deviation to the plot
-df.sd <- aggregate(df1$rep.num ~df1$group.char, FUN = "sd")
+df.sd <- aggregate(df$c ~df$b, FUN = "sd")
 df.sd
 colnames(df.sd) <- c("Factor","Mean")
+df.sd
+barplot(df.mean$Mean, names.arg = df.mean$Factor)
+
+barplot
+
+df.sd <- aggregate(df$c ~df$b, FUN = "sd")
+df.sd
+
+b.plot <- barplot(df.mean$Mean, names.arg = df.mean$Factor)
+
+arrows(b.plot, df.mean$Mean-df.sd$StanDev,
+       b.plot, df.mean$Mean+df.sd$StanDev,angle=90,code=3)
+#arrows not working
+b.plot<- barplot (df.mean$Mean, names.arg = df.mean$Factor, ylim=c (0,20))
 
 # Change the x and y labels and add a title
+b.plot<- barplot(df.mean$Mean, names.arg= df.mean$Factor, ylim= c(0,20), xlab= "Explanatory", ylab="Response",main="Bar Plot")
   # Export the plot as a PDF that is 4 inches wide and 7 inches tall.
-
+#get.wd - refuse to dispose of
+#missing the PDF export function and plot is backward on the height x width
+getwd()
 # Create a scatter plot between two of your numeric columns. (10 points)
+plot(df$e ~ df$d)
+plot(df$e ~ df$d, xlab = "Explanatory", ylab = "Response", main="Scatter Plot")
+
   # Change the point shape and color to something NOT used in the example.
+plot(df$e ~ df$d, xlab = "Explanatory", ylab = "Response", main = " Scatter Plot", 
+     cex.axis=0.75, cex.main = 1.25, cex.lab = 0.75, pch=3, col = "firebrick1")
+#Need to change the x/y labels...
   # Change the x and y labels and add a title
   # Export the plot as a JPEG by using the "Export" button in the plotting pane.
 
