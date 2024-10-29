@@ -99,5 +99,3 @@ mod1 <- lm(merged$Land_Use~totalN + Kalium + Magnesium + Ca + Al + TotalP )
 
 
 
-install.packages("devtools")
-
