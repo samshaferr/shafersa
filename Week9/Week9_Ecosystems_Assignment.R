@@ -95,3 +95,9 @@ mod1 <- lm(merged$Land_Use~totalN + Kalium + Magnesium + Ca + Al + TotalP )
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 
 
+
+
+
+
+install.packages("devtools")
+
