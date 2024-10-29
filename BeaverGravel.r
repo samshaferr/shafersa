@@ -124,8 +124,8 @@ for (i in 1:nrow(GB)) {
 }
 
 
-#dev.copy(jpeg,'C:/GitHub/analysis-scripts/plots/Gravel/2022UNTRM170.Hammersley.jpg')
-#dev.off()     ###Save this for printing graphs to file
+dev.copy(jpeg,'C:/GitHub/analysis-scripts/plots/Gravel/2022UNTRM170.Hammersley.jpg')
+dev.off()     ###Save this for printing graphs to file
 
 ##   Done with graphs
 
