@@ -9,7 +9,6 @@ library(readxl)
 library(vegan)
 
 Penaetal_2016_data <- read_excel("Penaetal_2016_data.xlsx")
-View(Penaetal_2016_data)
 
 abiotic.tibble <- read_excel("Penaetal_2016_data.xlsx", sheet = "Abiotic factors")
 abiotic <- as.data.frame(abiotic.tibble)
@@ -61,17 +60,17 @@ plot(ord2, ylim = c(-7,7), xlim = c(-7,7))
 #ord2 <- rda(veg_trans.means3 ~ TotalP , abiotic.means2)
 #ord2 <- rda(veg_trans.means3 ~ OlsenP , abiotic.means2)
 
-veg_trans.means3 <- na.omit(veg_trans.means3)
-abiotic.means3 <- na.omit(abiotic.means2)
 
-ord <- rda(veg_trans.means3 ~., abiotic.means2) 
-ord.int <- rda(veg_trans.means3 ~1, abiotic.means2)
+
+ord <- rda(veg_trans.means3 ~ pH + totalN + Ca + TotalP + OlsenP, abiotic.means2)
+
+
+ord <- rda(veg_trans.means3 ~., abiotic.means2[,7:15]) 
+ord.int <- rda(veg_trans.means3 ~1, abiotic.means2 [,7:15])
 step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
 step.mod$anova
 
-##Just over half of variance is explained (54%) with the 1st RDA with all of the abiotic variables included. After I ran the ANOVA the results can back insignificant.I then tried a series of different combination of
-##variables to see if it was telling a different story when they were separate. This in fact did not lead to any Significance. The variables that I did chose to run, I thought were the most influential for vegetation growth. 
-##
+##There is no significance between variables and among variables
 
 # (Q2 - 12 pts) Then use the dataset from the tutorial to create a linear model related to your RDA. Try multiple predictors to find the best fit model.
 # Explain the ecological importance of the significant predictors, or lack of significant predictors.
@@ -82,7 +81,7 @@ abiotic.means2$Parcel <- unique(abiotic$Parcel)
 merged <- merge(abiotic, veg_trans, by = "Parcel")
 merged$Land_Use <- as.numeric(merged$Land_Use)
 
-fit.weibull <- fitdist(merged$Land_Use, distr = "weibull")
+fit.weibull <- fitdist(merged$totalN, distr = "weibull")
 fit.norm <- fitdist(merged$totalN, distr = "norm")
 fit.gamma <- fitdist(merged$totalN, distr = "gamma")
 fit.lnorm <- fitdist(merged$totalN, distr = "lnorm")
@@ -90,8 +89,10 @@ fit.logis <- fitdist(merged$totalN, distr = "logis")
 gofstat(list(fit.weibull, fit.norm, fit.gamma, 
              fit.lnorm, fit.logis))
 
-mod1 <- lm(merged$Land_Use~totalN + Kalium + Magnesium + Ca + Al + TotalP )
-
+mod1 <- lm(merged$totalN~ pH + totalN + Kalium + Magnesium + Ca + Al + TotalP , merged)
+summary(mod1)
+anova(mod1)
+AIC(mod1)
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 
 
