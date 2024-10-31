@@ -70,7 +70,8 @@ ord.int <- rda(veg_trans.means3 ~1, abiotic.means2 [,7:15])
 step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
 step.mod$anova
 
-##There is no significance between variables and among variables
+##There is no significance between variables and among variables. I was returned a null avnoa because there was too much to compute and R said no thank you. I also recognize that I only have one degree of freedom.
+##This could also be the reason why I am getting a null anova back
 
 # (Q2 - 12 pts) Then use the dataset from the tutorial to create a linear model related to your RDA. Try multiple predictors to find the best fit model.
 # Explain the ecological importance of the significant predictors, or lack of significant predictors.
@@ -93,8 +94,14 @@ mod1 <- lm(merged$totalN~ pH + totalN + Kalium + Magnesium + Ca + Al + TotalP , 
 summary(mod1)
 anova(mod1)
 AIC(mod1)
-# (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 
+#Significant predictor indicate the essentials for an ecosystem to function. For this particular model
+#the most significant predictors were total N and pH, mean that these nutrient were essential for these vegetation transects to flourish. 
+
+# (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
+## The results from Q1 show no significance, but in Q2 we can see that nitrogen and pH return as significant. 
+##Understanding these relationships helps us try to further understand how abiotic and biotic factors are related as well as the interconnectedness of ecosystem dynamics
+##We can gain insight as to how soil chemistry shapes plant communities, and this can lead to development of strategies to restore struggling plant communities. 
 
 
 
