@@ -3,7 +3,8 @@
 
 
 #1: Give two specific conclusions you can make from these patterns. (4 pts)
-
+##The variable that explains brook trout population demographics comes from stream flashiness. 
+##Along with stream flashiness, alkalinity and conductivity both have some power in explaining brook trout population dynamics.
 
 #2: Rerun this analysis with either (a) a different metric of brook trout populations or a different species from the database. (6 pts)
 

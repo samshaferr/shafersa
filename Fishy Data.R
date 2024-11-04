@@ -6,6 +6,7 @@ devtools::install_github(repo = 'Team-FRI/dbfishR', upgrade = 'never')
 
 library(dbfishR)
 
+
 sites <- get_sites()
 events <- get_events()
 events_meta <- merge(sites, events[,c("SiteCode","EventCode","WaterTemp","pH","SpecCond","Alk","DO")])
