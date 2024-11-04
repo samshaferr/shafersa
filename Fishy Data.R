@@ -14,21 +14,21 @@ events_meta$year <-substring(as.character(events_meta$EventCode),1,4)
 
 fish_rec <- get_fish_records()
 
-brookie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Species == "Brook Trout" & Pass == "Pass 1"), FUN = length)
-colnames(brookie_count)[2] <- "TotalCount"
-small_brookie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Length_mm < 100 & Species == "Brook Trout" & Pass == "Pass 1"), FUN = length)
-colnames(small_brookie_count)[2] <- "SmallCount"
-big_brookie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Length_mm > 99 & Species == "Brook Trout" & Pass == "Pass 1"), FUN = length)
-colnames(big_brookie_count)[2] <- "BigCount"
+brownie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Species == "Brown Trout" & Pass == "Pass 1"), FUN = length)
+colnames(brownie_count)[2] <- "TotalCount"
+small_brownie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Length_mm < 100 & Species == "Brown Trout" & Pass == "Pass 1"), FUN = length)
+colnames(small_brownie_count)[2] <- "SmallCount"
+big_brownie_count <- aggregate(ID~EventCode, data = subset(fish_rec, Length_mm > 99 & Species == "Brown Trout" & Pass == "Pass 1"), FUN = length)
+colnames(big_brownie_count)[2] <- "BigCount"
 
-df_list <- list(brookie_count,small_brookie_count, big_brookie_count)
-all_brookies <- Reduce(function(x, y) merge(x,y, all= TRUE), df_list)
+df_list <- list(brownie_count,small_brownie_count, big_brownie_count)
+all_brownies <- Reduce(function(x, y) merge(x,y, all= TRUE), df_list)
 
-all_brookies$SmallCount[is.na(all_brookies$SmallCount)] <- 0 #this allows the replace NA below to only take care of 100% YOY NAs
-all_brookies$YOYRatio <- all_brookies$SmallCount/(all_brookies$BigCount+all_brookies$SmallCount)
-all_brookies$YOYRatio[is.na(all_brookies$YOYRatio)] <- 1 #NAs are 100% YOY.
+all_brownies$SmallCount[is.na(all_brownies$SmallCount)] <- 0 #this allows the replace NA below to only take care of 100% YOY NAs
+all_brownies$YOYRatio <- all_brownies$SmallCount/(all_brownies$BigCount+all_brownies$SmallCount)
+all_brownies$YOYRatio[is.na(all_brownies$YOYRatio)] <- 1 #NAs are 100% YOY.
 
-brookie_events <- merge(all_brookies, events_meta)
+brownie_events <- merge(all_brownies, events_meta)
 
 library(dataRetrieval)
 
@@ -55,7 +55,7 @@ medium_stations <- subset(stations_meta, drain_area_va > 10 & drain_area_va < 10
 library(sf)
 medium_stations_so <- st_as_sf(medium_stations,coords = c("dec_lat_va", "dec_long_va"))
 
-events_so <- st_as_sf(brookie_events[!is.na(brookie_events$SiteLon),], coords = c("SiteLat","SiteLon"))#remove NAs to create spatial object
+events_so <- st_as_sf(brownie_events[!is.na(brownie_events$SiteLon),], coords = c("SiteLat","SiteLon"))#remove NAs to create spatial object
 
 fish_flow_tmp <- st_join(events_so, medium_stations_so, join = st_nearest_feature)
 
