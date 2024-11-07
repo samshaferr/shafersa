@@ -122,6 +122,9 @@ plot_smooth(gam.mod, view="SpecCond", rm.ranef=FALSE, ylab = "", xlab = "Specifi
 
 
 
+
+
+
 #4: For your final project you'll need to find two separate data sources to combine similar to the process here.
   #In prep for that, find one data source to compare with either the data in dbfishR OR DataRetrieval. (5 pts)
   #Read data from that source into your script. (5 pts)
