@@ -39,7 +39,9 @@ gage_df <- readNWISdata(huc = HUC_list, parameterCd = "00060", startDate = "2010
 
 
 devtools::install_github(repo = 'leppott/ContDataQC', force = TRUE)
+
 library(ContDataQC)
+
 
 gage_df$year <- sapply(strsplit(as.character(gage_df$dateTime), "-"),"[[",1)#Create year to get annual R-B index
 
