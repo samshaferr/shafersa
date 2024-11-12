@@ -3,8 +3,9 @@
 
 
 #1: Give two specific conclusions you can make from these patterns. (4 pts)
-##The variable that explains brook trout population demographics comes from stream flashiness. 
+##The variable that explains brook trout population demographics comes from stream flashiness as well as water quality. 
 ##Along with stream flashiness, alkalinity and conductivity both have some power in explaining brook trout population dynamics.
+##There were very few differences between brook trout and brown trout dynamics. I would assume this is beacause these species are similar in the way that they interact with their environment
 
 #2: Rerun this analysis with either (a) a different metric of brook trout populations or a different species from the database. (6 pts)
 
@@ -120,7 +121,10 @@ plot_smooth(gam.mod, view="SpecCond", rm.ranef=FALSE, ylab = "", xlab = "Specifi
 
 #3: How do the results of your analysis compare to the vignette? (5 pts)
 
-
+##The results look nearly the same at least when looking at RBI, alkalinity, and specific conductivity
+##The residuals look slightly different though. There is definitely presence of heteroskedasticity indicating there might be some issues
+##that the model might need to be reworked to better show independence of variables. The residual model from the brook trout also showed heteroscedasticity
+## but not nearly to the extent of the brown trout model. 
 
 
 
@@ -129,3 +133,23 @@ plot_smooth(gam.mod, view="SpecCond", rm.ranef=FALSE, ylab = "", xlab = "Specifi
   #In prep for that, find one data source to compare with either the data in dbfishR OR DataRetrieval. (5 pts)
   #Read data from that source into your script. (5 pts)
   #Create any analysis of your choice that combines the two data sources, this can be as simple as a linear model. (5 pts)
+
+library(readr)
+NAS_Specimen_Download <- read_csv("NAS-Specimen-Download.csv")
+View(NAS_Specimen_Download)
+sites
+
+new_fish<-NAS_Specimen_Download
+ncol(new_fish)
+colnames(events_meta)[colnames(events_meta) == "SiteLat"] <- "Latitude"
+colnames(events_meta)[colnames(events_meta) == "SiteLon"] <- "Longitude"
+new_fish1<-new_fish[,-19:-67]
+new_fish2<-new_fish1[,-9]
+merged1 <- merge(new_fish2, events_meta, by = c("Latitude", "Longitude"), all.x = TRUE)
+merged2<- merge(new_fish2, events_meta, by = c("Latitude", "Longitude"), all.y = TRUE)
+
+
+mod1<-lm(merged2$Latitude~pH+SpecCond+Alk+DO, merged2)
+summary(mod1)
+anova(mod1)
+AIC(mod1)
