@@ -97,12 +97,13 @@ AIC(mod1)
 
 #Significant predictor indicate the essentials for an ecosystem to function. For this particular model
 #the most significant predictors were total N and pH, mean that these nutrient were essential for these vegetation transects to flourish. 
+#Why are you predicting totalN with totalN? Nitrogen should be a predictor of all the other things, not a response (mostly). This is why you got the "essentially perfect fit" warning.
 
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 ## The results from Q1 show no significance, but in Q2 we can see that nitrogen and pH return as significant. 
 ##Understanding these relationships helps us try to further understand how abiotic and biotic factors are related as well as the interconnectedness of ecosystem dynamics
 ##We can gain insight as to how soil chemistry shapes plant communities, and this can lead to development of strategies to restore struggling plant communities. 
-
+#So how do your results explain how soil chemistry shapes plant communities?
 
 
 
