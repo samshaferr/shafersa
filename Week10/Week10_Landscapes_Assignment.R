@@ -135,7 +135,7 @@ plot_smooth(gam.mod, view="SpecCond", rm.ranef=FALSE, ylab = "", xlab = "Specifi
   #Create any analysis of your choice that combines the two data sources, this can be as simple as a linear model. (5 pts)
 
 library(readr)
-NAS_Specimen_Download <- read_csv("NAS-Specimen-Download.csv")
+NAS_Specimen_Download <- read.csv("C:/GitHub/shafersa/Week10/NAS-Specimen-Download.csv")
 View(NAS_Specimen_Download)
 sites
 
@@ -147,7 +147,6 @@ new_fish1<-new_fish[,-19:-67]
 new_fish2<-new_fish1[,-9]
 merged1 <- merge(new_fish2, events_meta, by = c("Latitude", "Longitude"), all.x = TRUE)
 merged2<- merge(new_fish2, events_meta, by = c("Latitude", "Longitude"), all.y = TRUE)
-
 
 mod1<-lm(merged2$Latitude~pH+SpecCond+Alk+DO, merged2)
 summary(mod1)
