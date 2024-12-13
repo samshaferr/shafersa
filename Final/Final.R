@@ -357,13 +357,13 @@ sediment_data_1985 <- merged_data[, c("County", "1985 Progress_SLoadEOT", "Total
 colnames(sediment_data_1985) <- c("County", "1985 Progress_SLoadEOT", "Total Sediment, 1985 (T)")
 
 # Reshape the data to long format
-reshaped_data_1985 <- reshape(sediment_data, 
+reshaped_data_1985 <- reshape(sediment_data_1985, 
                          varying = c("1985 Progress_SLoadEOT", "Total Sediment, 1985 (T)"), 
                          v.names = "sediment_load",    # New column for sediment load
                          timevar = "measurement_type",  # Type of measurement (ProgressSLoad EOT or Total Sediment)
                          times = c("1985 Progress_SLoadEOT", "Total Sediment, 1985 (T)"),  # Specify the two measurement types
                          direction = "long")
-
+#had a typo in this one
 # Inspect the reshaped data
 head(reshaped_data_1985)
 # Convert 'County' and 'measurement_type' to factors
@@ -392,14 +392,14 @@ sediment_data_2007 <- merged_data[, c("County", "2007 Progress_SLoadEOT", "Total
 colnames(sediment_data_2007) <- c("County", "2007 Progress_SLoadEOT", "Total Sediment, 2007 (T)")
 
  
-reshaped_data_2007 <- reshape(sediment_data, 
+reshaped_data_2007 <- reshape(sediment_data_2007, 
                          varying = c("2007 Progress_SLoadEOT", "Total Sediment, 2007 (T)"), 
                          v.names = "sediment_load",     
                          timevar = "measurement_type",   
                          times = c("2007 Progress_SLoadEOT", "Total Sediment, 2007 (T)"),   
                          direction = "long")
 
- 
+ #same typo...did you run this?
 head(reshaped_data_2007)
  
 reshaped_data_2007$County <- factor(reshaped_data_2007$County)
@@ -413,7 +413,7 @@ plot(reshaped_data_2007$County, reshaped_data_2007$sediment_load,
      main = "Sediment Load by County (2007)",        
      xaxt = "n",                                     
      ylim = c(0, max(reshaped_data_2007$sediment_load, na.rm = TRUE) * 1.1))  
-
+#Same error - how did you get this to work?
 
 axis(1, at = 1:length(unique(reshaped_data_2007$County)), labels = levels(reshaped_data_2007$County), las = 2)
 #################################################################################################
